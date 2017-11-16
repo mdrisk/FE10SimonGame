@@ -1,0 +1,478 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* -- Classes -- */
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr, 2fr, 2fr, 1fr;
+  grid-template-rows: 1fr, 2fr, 2fr, 1fr;
+  grid-template-areas:
+    "leftTop   .     .     rightTop"
+    "leftTop cnter cnter rightTop"
+    "leftBottom cnter cnter rightBottom"
+    "leftBottom   .     .     rightBottom";
+  width: 70%;
+  height: 60%;
+  max-width: 500px;
+  min-width: 300px;
+  border: 2px solid #FFF;
+  border-radius: 5%;
+}
+
+.touch {
+  background: #000;
+  border: 5px solid #FFF;
+  border-radius: 5%;
+}
+
+.touch:hover {
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  / background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 150px;
+}
+
+/* The Close Button */
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* -- IDs -- */
+
+#battery {
+  padding: 0px;
+  margin: 0px;
+}
+
+#leftTop {
+  grid-area: leftTop;
+  grid-row: 1 / 3;
+  grid-column: 1 / 3;
+  background-color: #0A0;
+}
+
+#rightTop {
+  grid-area: rightTop;
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+  background-color: #A00;
+}
+
+#rightBottom {
+  grid-area: rightBottom;
+  grid-row: 3 / 5;
+  grid-column: 3 / 5;
+  background-color: #003F87;
+}
+
+#leftBottom {
+  grid-area: leftBottom;
+  grid-row: 3 / 5;
+  grid-column: 1 / 3;
+  background-color: #CC0;
+}
+
+#cnter {
+  grid-area: cnter;
+  grid-column: 2 / 4;
+  grid-row: 2/4;
+  border-radius: 50%;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-template-rows: 1fr, 1fr, 1fr;
+  grid-template-areas:
+    "title title "
+    "leftmid rightmid"
+    "bottomleft bottomright ";
+  grid-gap: 2px;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+}
+
+#ctr_top {
+  grid-area: title;
+  grid-column: 1 / 4;
+  font-size: 32px;
+  padding: 0px;
+  background: #FFF;
+}
+
+#ctr_mid_right {
+  grid-area: rightmid;
+  padding: 0px;
+  background: #FFF;
+  cursor: default;
+}
+
+#ctr_mid_ctr {
+  grid-area: bottomright;
+  padding: 0px;
+  background: #FFF;
+  align-self: center;
+}
+
+#ctr_mid_left {
+  grid-area: leftmid;
+  padding: 0px;
+  background: #FFF;
+}
+
+#ctr_bottom {
+  grid-area: bottomleft;
+  padding: 0px;
+  background: #FFF;
+}
+
+#score {
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+/* -- Light Ups -- */
+
+.button-red-unlit {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #A00;
+  border-radius: 50%;
+}
+
+.button-red-lit:focus, .button-red-unlit {
+  outline: 0;
+}
+
+.button-red-lit {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #F00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #FF0000 0 2px 12px;
+}
+
+.button-red-lit:hover, .button-red-unlit:hover {
+  cursor: pointer;
+}
+
+.led-green {
+  background-color: #0A0;
+  -webkit-animation: blinkGreen 0.5s;
+  -moz-animation: blinkGreen 0.5s;
+  -ms-animation: blinkGreen 0.5s;
+  -o-animation: blinkGreen 0.5s;
+  animation: blinkGreen 0.5s;
+}
+
+@-webkit-keyframes blinkGreen {
+  from {
+    background-color: #0A0;
+  }
+  50% {
+    background-color: #0F0;
+  }
+  to {
+    background-color: #0A0;
+  }
+}
+
+@-moz-keyframes blinkGreen {
+  from {
+    background-color: #0A0;
+  }
+  50% {
+    background-color: #0F0;
+  }
+  to {
+    background-color: #0A0;
+  }
+}
+
+@-ms-keyframes blinkGreen {
+  from {
+    background-color: #0A0;
+  }
+  50% {
+    background-color: #0F0;
+  }
+  to {
+    background-color: #0A0;
+  }
+}
+
+@-o-keyframes blinkGreen {
+  from {
+    background-color: #0A0;
+  }
+  50% {
+    background-color: #0F0;
+  }
+  to {
+    background-color: #0A0;
+  }
+}
+
+@keyframes blinkGreen {
+  from {
+    background-color: #0A0;
+  }
+  50% {
+    background-color: #0F0;
+  }
+  to {
+    background-color: #0A0;
+  }
+}
+
+.led-red {
+  background-color: #A00;
+  -webkit-animation: blinkRed 0.5s;
+  -moz-animation: blinkRed 0.5s;
+  -ms-animation: blinkRed 0.5s;
+  -o-animation: blinkRed 0.5s;
+  animation: blinkRed 0.5s;
+}
+
+@-webkit-keyframes blinkRed {
+  from {
+    background-color: #A00;
+  }
+  50% {
+    background-color: #F00;
+  }
+  to {
+    background-color: #A00;
+  }
+}
+
+@-moz-keyframes blinkRed {
+  from {
+    background-color: #A00;
+  }
+  50% {
+    background-color: #F00;
+  }
+  to {
+    background-color: #A00;
+  }
+}
+
+@-ms-keyframes blinkRed {
+  from {
+    background-color: #A00;
+  }
+  50% {
+    background-color: #F00;
+  }
+  to {
+    background-color: #A00;
+  }
+}
+
+@-o-keyframes blinkRed {
+  from {
+    background-color: #A00;
+  }
+  50% {
+    background-color: #F00;
+  }
+  to {
+    background-color: #A00;
+  }
+}
+
+@keyframes blinkRed {
+  from {
+    background-color: #A00;
+  }
+  50% {
+    background-color: #F00;
+  }
+  to {
+    background-color: #A00;
+  }
+}
+
+/* Light blue - #0276FD, Dark blue - #003F87 */
+
+.led-blue {
+  background-color: #003F87;
+  -webkit-animation: blinkBlue 0.5s;
+  -moz-animation: blinkBlue 0.5s;
+  -ms-animation: blinkBlue 0.5s;
+  -o-animation: blinkBlue 0.5s;
+  animation: blinkBlue 0.5s;
+}
+
+@-webkit-keyframes blinkBlue {
+  from {
+    background-color: #003F87;
+  }
+  50% {
+    background-color: #0276FD;
+  }
+  to {
+    background-color: #003F87;
+  }
+}
+
+@-moz-keyframes blinkBlue {
+  from {
+    background-color: #003F87;
+  }
+  50% {
+    background-color: #0276FD;
+  }
+  to {
+    background-color: #003F87;
+  }
+}
+
+@-ms-keyframes blinkBlue {
+  from {
+    background-color: #003F87;
+  }
+  50% {
+    background-color: #0276FD;
+  }
+  to {
+    background-color: #003F87;
+  }
+}
+
+@-o-keyframes blinkBlue {
+  from {
+    background-color: #003F87;
+  }
+  50% {
+    background-color: #0276FD;
+  }
+  to {
+    background-color: #003F87;
+  }
+}
+
+@keyframes blinkBlue {
+  from {
+    background-color: #003F87;
+  }
+  50% {
+    background-color: #0276FD;
+  }
+  to {
+    background-color: #003F87;
+  }
+}
+
+/* Light yellow - #FF0, Dark yellow - #CC0 */
+
+.led-yellow {
+  background-color: #CC0;
+  -webkit-animation: blinkYellow 0.5s;
+  -moz-animation: blinkYellow 0.5s;
+  -ms-animation: blinkYellow 0.5s;
+  -o-animation: blinkYellow 0.5s;
+  animation: blinkYellow 0.5s;
+}
+
+@-webkit-keyframes blinkYellow {
+  from {
+    background-color: #CC0;
+  }
+  50% {
+    background-color: #FF0;
+  }
+  to {
+    background-color: #CC0;
+  }
+}
+
+@-moz-keyframes blinkYellow {
+  from {
+    background-color: #CC0;
+  }
+  50% {
+    background-color: #FF0;
+  }
+  to {
+    background-color: #CC0;
+  }
+}
+
+@-ms-keyframes blinkYellow {
+  from {
+    background-color: #CC0;
+  }
+  50% {
+    background-color: #FF0;
+  }
+  to {
+    background-color: #CC0;
+  }
+}
+
+@-o-keyframes blinkYellow {
+  from {
+    background-color: #CC0;
+  }
+  50% {
+    background-color: #FF0;
+  }
+  to {
+    background-color: #CC0;
+  }
+}
+
+@keyframes blinkYellow {
+  from {
+    background-color: #CC0;
+  }
+  50% {
+    background-color: #FF0;
+  }
+  to {
+    background-color: #CC0;
+  }
+}

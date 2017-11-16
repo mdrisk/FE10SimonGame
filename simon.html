@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang = "en">
+<head>
+  <meta charset="utf-8">
+  <title>The Simon Game</title>
+  <meta name="description" content="The Simon Game">
+  <meta name="author" content="Matthew Risk">
+
+  <link rel="stylesheet" href="simon.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <audio id="audio5" src="http://res.cloudinary.com/mdrisk/video/upload/v1510621781/beep2_riklau.mp3"></audio>
+    <div id="leftTop" class="touch" onClick="touched(this.id)"><audio id="audio1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+    </div>
+    <div id="leftBottom" class="touch" onClick="touched(this.id)"><audio id="audio2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+    </div>
+    <div id="rightBottom" class="touch" onClick="touched(this.id)"><audio id="audio3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+    </div>
+    <div id="rightTop" class="touch" onClick="touched(this.id)"><audio id="audio4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+    </div>
+    <div id="cnter" class="touch">
+      <div id=ctr_top class="touch">Simon</div>
+      <div id=ctr_mid_left class="touch">Score
+        <p id="score">00</p>
+      </div>
+      <div id=ctr_mid_ctr class="touch" onClick="touched(this.id)">Start</div>
+      <div id=ctr_mid_right class="touch">Strict<br><button id="strictIndicator" onClick="strIndicator()" class="button-red-unlit"></button></div>
+      <div id=ctr_bottom class="touch" onClick="touched(this.id)">
+        <p id="battery">Off</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="winModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>You Win!</p>
+      <button onClick="newGame()">Play Again?</button>
+      <button onClick="closeWindow()">Cancel</button>
+    </div>
+
+  </div>
+</body>
+  <script type="text/javascript" src="simon.js"></script>
+</html>
